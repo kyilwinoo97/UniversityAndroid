@@ -17,7 +17,7 @@ class UniversityListViewModel @Inject constructor(private val uniRepository: Uni
     fun getUniversityByCountry(country:String){
     Log.d("Call","NetworkCall")
         viewModelScope.launch {
-            uniRepository.getUniversityByCountry(country).collect(){
+            uniRepository.getUniversityByCountry(country).collect{
                 it ->
                 print("data length -> ${ it.data?.size }")
             }

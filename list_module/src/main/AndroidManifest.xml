@@ -5,9 +5,11 @@
 
     <application
         android:usesCleartextTraffic="true"
+
         >
         <activity
             android:name=".presentaion.UniListActivity"
+
             android:exported="false" />
     </application>
 

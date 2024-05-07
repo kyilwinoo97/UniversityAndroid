@@ -21,3 +21,4 @@ rootProject.name = "UniversityAndroid"
 include(":app")
 include(":list_module")
 include(":core")
+include(":detail")
