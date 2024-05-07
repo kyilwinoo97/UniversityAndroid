@@ -78,6 +78,7 @@ dependencies {
 
 
     implementation(project(Modules.core))
+    implementation(project(Modules.Detail))
 
 
     testImplementation(Dependencies.junit)

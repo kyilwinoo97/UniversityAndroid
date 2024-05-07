@@ -1,4 +1,5 @@
 package com.assessment.universityandroid.list_module.presentaion
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,23 +23,13 @@ class UniversityListViewModel @Inject constructor(private val uniRepository: Uni
 
     var universityList = MutableLiveData<Resource<List<University>>>()
 
+    init {
+        getUniversityByCountry("United Arab Emirates")
+    }
 
     fun getUniversityByCountry(country:String){
         viewModelScope.launch {
             universityList = uniRepository.getUniversityByCountry(country).flowOn(Dispatchers.IO).asLiveData(Dispatchers.Main) as MutableLiveData<Resource<List<University>>>
-//            uniRepository.getUniversityByCountry(country).collect{
-//                when(it){
-//                    is Resource.Success -> {
-//                        universityObj = it.data!!
-//                    }
-//                    is Resource.Error -> {
-//
-//                    }
-//                    is Resource.Loading -> {
-//
-//                    }
-//                }
-//            }
         }
     }
 }

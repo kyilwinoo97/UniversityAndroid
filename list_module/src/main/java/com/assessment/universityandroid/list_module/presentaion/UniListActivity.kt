@@ -36,31 +36,20 @@ class UniListActivity : AppCompatActivity() {
             .uniListModule(UniListModule(this))
             .build()
             .inject(this)
-
-        if (viewModel != null){
-            viewModel.getUniversityByCountry(country)
-        }
-        setUpRecyclerView()
         viewModel.universityList.observe(this) {
             it.data?.let {
                 data ->
                 val layoutManager = LinearLayoutManager(this)
                 binding.recyclerView.layoutManager = layoutManager
-                adapter = RecyclerAdapter(data)
+                adapter = RecyclerAdapter(data,this)
                 binding.recyclerView.adapter = adapter
             }
         }
 
     }
 
-    private fun setUpRecyclerView() {
-
-    }
-
-    override fun onResume() {
-        if (viewModel != null){
-            viewModel.getUniversityByCountry(country)
-        }
-        super.onResume()
+    override fun onRestart() {
+        super.onRestart()
+        this.recreate()
     }
 }
