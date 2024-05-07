@@ -15,7 +15,6 @@ import javax.inject.Inject
 class UniRepositoryImpl @Inject constructor(
     private var dao: UniversityDao,
     private var db: UniDatabase,
-    private var context: Application,
     val apiInterface: ApiInterface
 ) : UniRepository {
     override fun getUniversityByCountry(country: String): Flow<Resource<List<University>>> =
@@ -24,7 +23,8 @@ class UniRepositoryImpl @Inject constructor(
                 dao.getAllUniversity()
             },
             shouldFetch = {
-                isInternetAvailable()
+                          true
+               // isInternetAvailable()
             },
             fetch = {
                 delay(1000)
@@ -41,12 +41,12 @@ class UniRepositoryImpl @Inject constructor(
             }
         )
 
-    private fun isInternetAvailable(): Boolean {
-        val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkInfo = connMgr.getActiveNetworkInfo();
-        return (networkInfo != null && networkInfo.isConnected());
-
-    }
+//    private fun isInternetAvailable(): Boolean {
+//        val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+//        val networkInfo = connMgr.getActiveNetworkInfo();
+//        return (networkInfo != null && networkInfo.isConnected());
+//
+//    }
 
 
 }

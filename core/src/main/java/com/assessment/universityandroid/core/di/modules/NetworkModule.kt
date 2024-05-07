@@ -1,6 +1,7 @@
 package com.assessment.universityandroid.core.di.modules
 
 import android.app.Application
+import android.content.Context
 import androidx.multidex.BuildConfig
 import com.assessment.universityandroid.core.database.UniDatabase
 import com.assessment.universityandroid.core.database.UniversityDao
@@ -32,9 +33,12 @@ class NetworkModule {
     @Provides
     fun provideHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
-        if (BuildConfig.DEBUG) {
-            clientBuilder.addInterceptor(interceptor)
-        }
+        clientBuilder.addInterceptor(interceptor)
+
+//        if (BuildConfig.DEBUG) {
+//            clientBuilder.addInterceptor(interceptor)
+//
+//        }
         return clientBuilder.build()
     }
 
@@ -50,14 +54,13 @@ class NetworkModule {
     @Provides
     fun provideApiService(retrofit: Retrofit) = retrofit.create(ApiInterface::class.java)
 
+
     @Singleton
     @Provides
     fun provideRepository(dao: UniversityDao,db:UniDatabase,
-                          context: Application,
                           service: ApiInterface) = UniRepositoryImpl(
         dao = dao,
         db =  db,
-        context = context,
         apiInterface = service
     )
 }
