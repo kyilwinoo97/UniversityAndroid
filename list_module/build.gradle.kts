@@ -71,6 +71,9 @@ dependencies {
     implementation(Dependencies.dagger)
     implementation(Dependencies.daggerCompiler)
 
+
+    implementation(Dependencies.liveData)
+
     implementation(Dependencies.timber)
 
 

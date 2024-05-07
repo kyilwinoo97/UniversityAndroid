@@ -11,6 +11,7 @@ object Versions {
     const val roomDb = "2.6.0-beta01"
     const val lifecycle = "2.7.0-alpha02"
     const val lifecycleExt = "2.2.0"
+    const val livedata = "2.4.0"
     const val retrofit = "2.9.0"
     const val okhttp = "3.4.1"
     const val dagger = "2.51.1"

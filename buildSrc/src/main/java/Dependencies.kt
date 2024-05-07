@@ -22,6 +22,8 @@ object Dependencies {
     val lifeCycleRuntimeCompose by lazy { "androidx.lifecycle:lifecycle-runtime-compose:${Versions.lifecycle}" }
     val lifeCycleViewmodelCompose by lazy { "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.lifecycle}" }
     val lifeCycleExtensions by lazy {  "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleExt}"}
+    val liveData by lazy { "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.livedata}"}
+
 
     //retrofit
     val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
