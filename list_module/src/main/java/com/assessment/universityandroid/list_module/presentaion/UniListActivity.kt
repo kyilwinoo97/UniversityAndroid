@@ -28,7 +28,7 @@ class UniListActivity : AppCompatActivity() {
             .inject(this)
 
         if (viewModel != null){
-           viewModel.getUniversityByCountry(country)
+           // viewModel.getUniversityByCountry(country)
         }
     }
 }

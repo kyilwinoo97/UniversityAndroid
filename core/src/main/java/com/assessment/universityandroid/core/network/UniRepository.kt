@@ -1,7 +1,6 @@
 package com.assessment.universityandroid.core.network
 
 import com.assessment.universityandroid.core.database.University
-import dagger.Module
 import kotlinx.coroutines.flow.Flow
 
 

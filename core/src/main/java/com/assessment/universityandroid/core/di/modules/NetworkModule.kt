@@ -1,12 +1,11 @@
 package com.assessment.universityandroid.core.di.modules
 
-import android.app.Application
-import android.content.Context
 import androidx.multidex.BuildConfig
+import com.assessment.universityandroid.core.connectivity.OnlineChecker
+
 import com.assessment.universityandroid.core.database.UniDatabase
 import com.assessment.universityandroid.core.database.UniversityDao
 import com.assessment.universityandroid.core.network.ApiInterface
-import com.assessment.universityandroid.core.network.UniRepository
 import com.assessment.universityandroid.core.network.UniRepositoryImpl
 import dagger.Module
 import dagger.Provides
@@ -33,12 +32,11 @@ class NetworkModule {
     @Provides
     fun provideHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
-        clientBuilder.addInterceptor(interceptor)
 
-//        if (BuildConfig.DEBUG) {
-//            clientBuilder.addInterceptor(interceptor)
-//
-//        }
+        if (BuildConfig.DEBUG) {
+            clientBuilder.addInterceptor(interceptor)
+
+        }
         return clientBuilder.build()
     }
 
@@ -57,10 +55,15 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRepository(dao: UniversityDao,db:UniDatabase,
-                          service: ApiInterface) = UniRepositoryImpl(
+    fun provideRepository(
+        dao: UniversityDao, db: UniDatabase,
+        service: ApiInterface,
+        onlineChecker: OnlineChecker
+    ) = UniRepositoryImpl(
         dao = dao,
-        db =  db,
-        apiInterface = service
+        db = db,
+        apiInterface = service,
+        onlineChecker = onlineChecker
     )
+
 }

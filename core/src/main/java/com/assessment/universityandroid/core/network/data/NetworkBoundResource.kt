@@ -23,7 +23,6 @@ inline fun <ResultType, RequestType> networkBoundResource(
 
     // get one list of product from database
     val data = query().first()
-
     val flow = if (shouldFetch(data)) {
 
         emit(Resource.Loading(data))

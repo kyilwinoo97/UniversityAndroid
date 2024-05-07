@@ -67,6 +67,7 @@ dependencies {
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.okhttp)
 
+
     //dagger
     implementation(Dependencies.dagger)
     implementation(Dependencies.daggerCompiler)

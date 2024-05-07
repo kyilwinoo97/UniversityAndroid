@@ -8,7 +8,7 @@ object Versions {
     const val espressoCore = "3.5.1"
     const val multidex = "2.0.1"
     const val coroutine = "1.7.1"
-    const val roomDb = "2.5.1"
+    const val roomDb = "2.6.0-beta01"
     const val lifecycle = "2.7.0-alpha02"
     const val lifecycleExt = "2.2.0"
     const val retrofit = "2.9.0"
